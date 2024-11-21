@@ -21,8 +21,6 @@
  */
 #pragma once
 
-#define CONFIG_EXAMPLES_DIR "Creality/Ender-3 V2/CrealityV422/MarlinUI"
-
 /**
  * Configuration_adv.h
  *
@@ -576,16 +574,16 @@
  * The fan turns on automatically whenever any driver is enabled and turns
  * off (or reduces to idle speed) shortly after drivers are turned off.
  */
-//#define USE_CONTROLLER_FAN
+#define USE_CONTROLLER_FAN
 #if ENABLED(USE_CONTROLLER_FAN)
-  //#define CONTROLLER_FAN_PIN -1           // Set a custom pin for the controller fan
+  #define CONTROLLER_FAN_PIN FAN1_PIN           // Set a custom pin for the controller fan
   //#define CONTROLLER_FAN2_PIN -1          // Set a custom pin for second controller fan
   //#define CONTROLLER_FAN_USE_Z_ONLY       // With this option only the Z axis is considered
   //#define CONTROLLER_FAN_IGNORE_Z         // Ignore Z stepper. Useful when stepper timeout is disabled.
   #define CONTROLLERFAN_SPEED_MIN         0 // (0-255) Minimum speed. (If set below this value the fan is turned off.)
-  #define CONTROLLERFAN_SPEED_ACTIVE    255 // (0-255) Active speed, used when any motor is enabled
+  #define CONTROLLERFAN_SPEED_ACTIVE     25 // (0-255) Active speed, used when any motor is enabled
   #define CONTROLLERFAN_SPEED_IDLE        0 // (0-255) Idle speed, used when motors are disabled
-  #define CONTROLLERFAN_IDLE_TIME        60 // (seconds) Extra time to keep the fan running after disabling motors
+  #define CONTROLLERFAN_IDLE_TIME         2 // (seconds) Extra time to keep the fan running after disabling motors
 
   //#define CONTROLLERFAN_KICKSTART_TIME  100  // (ms)
   //#define CONTROLLERFAN_KICKSTART_POWER 180  // 64-255
@@ -596,7 +594,7 @@
   // Use TEMP_SENSOR_SOC as a trigger for enabling the controller fan
   //#define CONTROLLER_FAN_MIN_SOC_TEMP 40  // (°C) Turn on the fan if the SoC reaches this temperature
 
-  #define CONTROLLER_FAN_BED_HEATING        // Turn on the fan when heating the bed
+  //#define CONTROLLER_FAN_BED_HEATING        // Turn on the fan when heating the bed
 
   //#define CONTROLLER_FAN_EDITABLE         // Enable M710 configurable settings
   #if ENABLED(CONTROLLER_FAN_EDITABLE)
@@ -691,7 +689,7 @@
  * Multiple extruders can be assigned to the same pin in which case
  * the fan will turn on when any selected extruder is above the threshold.
  */
-#define E0_AUTO_FAN_PIN -1
+#define E0_AUTO_FAN_PIN FAN2_PIN
 #define E1_AUTO_FAN_PIN -1
 #define E2_AUTO_FAN_PIN -1
 #define E3_AUTO_FAN_PIN -1
@@ -3153,7 +3151,7 @@
 
   #if AXIS_IS_TMC_CONFIG(E0)
     #define E0_CURRENT      800
-    #define E0_MICROSTEPS    16
+    #define E0_MICROSTEPS    128
     #define E0_RSENSE         0.11
     #define E0_CHAIN_POS     -1
     //#define E0_INTERPOLATE true
@@ -3350,7 +3348,7 @@
    * Define your own with:
    * { <off_time[1..15]>, <hysteresis_end[-3..12]>, hysteresis_start[1..8] }
    */
-  #define CHOPPER_TIMING CHOPPER_DEFAULT_12V        // All axes (override below)
+  #define CHOPPER_TIMING CHOPPER_DEFAULT_24V        // All axes (override below)
   //#define CHOPPER_TIMING_X  CHOPPER_TIMING        // For X Axes (override below)
   //#define CHOPPER_TIMING_X2 CHOPPER_TIMING_X
   //#define CHOPPER_TIMING_Y  CHOPPER_TIMING        // For Y Axes (override below)
@@ -4071,7 +4069,7 @@
   //#define CUSTOM_MENU_MAIN_SCRIPT_AUDIBLE_FEEDBACK
 
   #define MAIN_MENU_ITEM_1_DESC "E3D V6"
-  #define MAIN_MENU_ITEM_1_GCODE "M206 X0Y0Z0\nM851 X1.5Y45.64Z-1.34\nM92 E136.7\nM900 K0.4\nM204 P2400 R2000 T2700\nM205 J0.03\nM301 P26.27I2.11D81.97\nM305 P0 R4700 T100000 B4267\nM500"
+  #define MAIN_MENU_ITEM_1_GCODE "M206 X0Y0Z0\nM851 X1.5Y45.64Z-1.71\nM92 E1093.6\nM900 K0.4\nM204 P2400 R2000 T2700\nM205 J0.03\nM301 P26.27I2.11D81.97\nM305 P0 R4700 T100000 B4267\nM500"
 
   #define MAIN_MENU_ITEM_2_DESC "Volcano"
   #define MAIN_MENU_ITEM_2_GCODE "M206 X0Y0Z0\nM851 X1.5Y45.64Z-1.95\nM92 E136.7\nM900 K0.33\nM204 P2400 R2000 T2700\nM205 J0.03\nM301 P29.94I3.74D59.88\nM305 P0 R4700 T100000 B4092\nM500"
