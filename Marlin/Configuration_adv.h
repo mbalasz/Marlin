@@ -3012,7 +3012,7 @@
   #if AXIS_IS_TMC_CONFIG(X)
     #define X_CURRENT       800        // (mA) RMS current. Multiply by 1.414 for peak current.
     #define X_CURRENT_HOME  X_CURRENT  // (mA) RMS current for homing. (Typically lower than *_CURRENT.)
-    #define X_MICROSTEPS     16        // 0..256
+    #define X_MICROSTEPS     64        // 0..256
     #define X_RSENSE          0.11
     #define X_CHAIN_POS      -1        // -1..0: Not chained. 1: MCU MOSI connected. 2: Next in chain, ...
     //#define X_INTERPOLATE  true      // Enable to override 'INTERPOLATE' for the X axis
@@ -3032,7 +3032,7 @@
   #if AXIS_IS_TMC_CONFIG(Y)
     #define Y_CURRENT       800
     #define Y_CURRENT_HOME  Y_CURRENT
-    #define Y_MICROSTEPS     16
+    #define Y_MICROSTEPS     64
     #define Y_RSENSE          0.11
     #define Y_CHAIN_POS      -1
     //#define Y_INTERPOLATE  true
@@ -4078,7 +4078,7 @@
   #define MAIN_MENU_ITEM_3_GCODE "M206 X0Y-12Z0\nM851 X-1.5Y50Z-2.6\nM92 E965\nM900 K0.04\nM204 P1000 R1000 T2000\nM301 P9.31I0.54D40.22\nM305 P0 R4700 T100000 B3950\nM500"
 
   #define MAIN_MENU_ITEM_4_DESC "Plotter"
-  #define MAIN_MENU_ITEM_4_GCODE "M206 X0Y0Z0\nM851 X1.5Y45.64Z-2.925\nM204 P400 R400 T600\nM500"
+  #define MAIN_MENU_ITEM_4_GCODE "M206 X0Y-19.5Z0\nM851 X1.5Y45.64Z-2.925\nM204 P400 R400 T600\nM500"
 
   #define MAIN_MENU_ITEM_5_DESC "E3D Hemera"
   #define MAIN_MENU_ITEM_5_GCODE "M206 X-31Y-13Z0\nM851 X1.5Y45.64Z-4.58\nM92 E397\nM900 K0.03\nM204 P900 R900 T1500\nM301 P26.21I2.00D85.96\nM305 P0 R4700 T100000 B4725 C0.0000000706\nM500"
